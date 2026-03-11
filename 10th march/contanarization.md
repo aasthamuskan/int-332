@@ -19,3 +19,8 @@ guest os  --    --       bins/libs --   --
   hyerviser                  docer engine 
   host os                      os
   infrastructure             infrastructure
+
+
+container runtime  is a software used to start stop and manage the containers .........also can say it act as running container got aware about what type of container is running
+    if we need to run a container the comand is** container run containername/id**
+    if we need to stop a container the comand is** container stop containername/id**
