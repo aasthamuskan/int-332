@@ -96,11 +96,11 @@ distribution flow
 
 
 pull and push opreation
-    push - uplaod iameg layer from local system to registru
-         - requires authentication'
+    push - uplaod iameg layer from     local system to registru
+         - requires    authentication'
          - only new layer are pushed
  - pull
-       - downloads images layer from registry
+       - downloads images layer from     registry
        - uses caching to avoid re -downlaading existing layer
      - 
 - -------------role of images registeris in ci/cd pipelines------------------
