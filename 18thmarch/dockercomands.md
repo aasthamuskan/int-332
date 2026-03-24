@@ -13,3 +13,17 @@ docker rm -f mynginx //rm is remoing the container
                     // forced remove (also remove if ots running)
 
 doker rmi nginx
+
+
+//docker exec -it<container id> bash ->Opens terminal inside a runnig container
+
+docker logs<container id> ->show container output
+docker inspect<container id> ->display details configration in json format
+
+
+------volume commans--------
+
+docker volume create myvolume  -create a persistent storage volume
+docker volume ls -lists all the volume
+docker volume inspect myvolume -shows volume details
+docker volume rm 
