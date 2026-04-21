@@ -1,0 +1,137 @@
+# Docker Learning Notes (Step-by-Step)
+
+## 1. File Rename (Linux/Mac)
+
+```bash
+mv old_filename new_filename
+```
+
+* Rename = move within same directory
+* Internally updates directory entry
+
+---
+
+## 2. Docker vs File Operations
+
+* Docker does NOT manage files directly
+* File rename → use `mv`
+* Container rename → `docker rename`
+
+---
+
+## 3. Docker Build
+
+```bash
+docker build -t custom:nginx-v1 .
+```
+
+* Dockerfile → Image
+* Uses layering
+
+---
+
+## 4. Docker Run
+
+```bash
+docker run -d -p 8080:80 --name mycontainer image
+```
+
+* `-d` → background
+* `-p` → port mapping
+
+---
+
+## 5. Container Lifecycle
+
+| Command | Meaning          |
+| ------- | ---------------- |
+| run     | create + start   |
+| start   | restart existing |
+| stop    | stop container   |
+| rm      | delete           |
+
+---
+
+## 6. Debugging Containers
+
+```bash
+docker exec -it <id> bash
+docker logs <id>
+docker top <id>
+```
+
+---
+
+## 7. Ubuntu Container Issue
+
+* Ubuntu exits immediately
+* No running process
+
+Fix:
+
+```bash
+docker run -it ubuntu bash
+```
+
+---
+
+## 8. Apache (httpd) Setup
+
+```bash
+docker pull httpd
+docker run -d -p 8080:80 --name apache-container httpd
+```
+
+Access:
+
+```
+http://localhost:8080
+```
+
+---
+
+## 9. Environment Variables
+
+```bash
+docker run -it --name college-container -e COLLEGE=CSE ubuntu bash
+```
+
+Inside:
+
+```bash
+echo $COLLEGE
+```
+
+---
+
+## 10. TLS Error (Mongo Pull)
+
+Error:
+
+```
+x509: certificate signed by unknown authority
+```
+
+Fix:
+
+* Check system time
+* Change network
+* Restart Docker
+
+---
+
+## Key Mental Models
+
+* Container = process
+* Image = blueprint
+* Dockerfile = recipe
+
+---
+
+## Final Insight
+
+> Docker debugging = logs + process + environment
+
+---
+
+End of Notes
