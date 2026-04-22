@@ -1,0 +1,206 @@
+# 🐳 DevOps Notes — Docker & Microservices (Complete Summary)
+
+---
+
+# 📌 1. Monolithic vs Microservices
+
+## Monolithic
+- Single codebase, single deployment
+- Easy to start, hard to scale
+- Tight coupling
+
+## Microservices
+- Multiple independent services
+- Each service has its own logic + DB
+- Scalable but complex
+
+---
+
+# 📌 2. Advantages of Microservices
+
+- Independent scaling
+- Independent deployment
+- Fault isolation
+- Team autonomy
+- Technology flexibility
+
+---
+
+# ❌ Disadvantages of Microservices
+
+- High complexity
+- Network latency
+- Data inconsistency
+- Debugging difficult
+- Higher cost
+
+---
+
+# 📌 3. Services and Their Database
+
+- Each service owns its database
+- No direct DB sharing ❌
+- Communication via API/events
+
+Example:
+- User Service → User DB
+- Order Service → Order DB
+
+---
+
+# 📌 4. Docker — Why Needed?
+
+## Problems Before Docker
+- Works on my machine issue
+- Dependency conflicts
+- Slow setup
+- Environment mismatch
+
+## Docker Solves:
+- Environment consistency
+- Isolation (namespaces, cgroups)
+- Fast deployment
+- Portability
+
+---
+
+# 📌 5. Docker Compose — Overview
+
+## What is Docker Compose?
+- Tool to run multiple containers
+- Uses `docker-compose.yml`
+
+## Why needed?
+- Manage multi-container apps
+- One command execution
+- Automatic networking
+- Environment consistency
+
+---
+
+# 📌 6. Docker Compose File Structure
+
+```yaml
+version: '3'
+
+services:
+  app:
+    image: node
+    ports:
+      - "3000:3000"
+
+volumes:
+networks:
+📌 7. services (MOST IMPORTANT)
+Defines containers
+Each service = one container
+Service name = hostname
+
+Example:
+
+services:
+  backend:
+    build: .
+📌 8. image vs build
+image
+Uses prebuilt image
+Example:
+image: mongo
+build
+Builds from Dockerfile
+build: .
+Difference
+Feature	image	build
+Source	Docker Hub	Local
+Speed	Fast	Slow
+Use	DB, nginx	Custom app
+📌 9. ports
+Syntax
+ports:
+  - "host:container"
+
+Example:
+
+"3000:3000"
+Key Idea
+Host → Container mapping
+📌 10. volumes
+Why needed?
+Prevent data loss
+Example:
+volumes:
+  - ./data:/data
+Types:
+Bind mount
+Named volume
+Anonymous volume
+📌 11. How Docker Compose Works
+Flow:
+Read YAML
+Build/Pull images
+Create network
+Setup volumes
+Start containers
+Connect services
+📌 12. Docker Compose Commands
+Start
+docker-compose up
+Background
+docker-compose up -d
+Stop
+docker-compose down
+Logs
+docker-compose logs
+List containers
+docker-compose ps
+Build
+docker-compose build
+📌 13. Problems with Docker Compose
+Not production-ready
+No auto-scaling
+No load balancing
+No self-healing
+Single host only
+📌 14. Docker Compose vs Kubernetes
+Feature	Docker Compose	Kubernetes
+Use case	Dev/Test	Production
+Scaling	Manual	Auto
+Self-healing	No	Yes
+Complexity	Low	High
+📌 15. Mental Models (Must Remember)
+Docker
+Container = portable environment
+Compose
+YAML = blueprint
+Compose = executor
+Microservices
+Each service owns logic + data
+🎯 Final Interview Summary
+Docker solves environment and dependency issues
+Docker Compose manages multi-container apps
+Services define containers
+Ports expose containers
+Volumes persist data
+Microservices improve scalability but add complexity
+🚀 Action Plan
+Day 1
+Run simple compose file
+Day 2
+Add backend + DB
+Day 3
+Add volumes + env variables
+Next
+Learn Kubernetes basics
+
+---
+
+## ✅ What You Should Do Next
+
+1. Create file:
+```bash
+notes.md
+Paste this content
+Use in:
+Exams 📄
+Viva 🎯
+Revision 🔁
