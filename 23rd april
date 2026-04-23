@@ -1,0 +1,253 @@
+# 🐳 Docker Compose Learning Notes (23 April Session)
+
+---
+
+## 📌 1. Nano Editor Basics
+
+### Save & Exit
+
+```
+Ctrl + O → Enter → Ctrl + X
+```
+
+### Exit with prompt
+
+```
+Ctrl + X → Y → Enter
+```
+
+---
+
+## 📌 2. View File Content
+
+### Commands
+
+```
+cat filename.txt     # full content
+less filename.txt    # scroll view
+nano filename.txt    # open for editing
+head filename.txt    # first 10 lines
+tail filename.txt    # last 10 lines
+```
+
+---
+
+## 📌 3. Docker Compose Basics
+
+### What is Docker Compose?
+
+* Tool to run multiple containers together
+* Uses YAML file
+
+### Basic Flow
+
+```
+docker-compose.yml → docker compose up → containers run
+```
+
+---
+
+## 📌 4. Docker Compose Commands
+
+### Start
+
+```
+docker compose up
+```
+
+### Background run
+
+```
+docker compose up -d
+```
+
+### Rebuild + run
+
+```
+docker compose up --build
+```
+
+---
+
+## 📌 5. Common Error (Important)
+
+### ❌ Error
+
+```
+no configuration file provided: not found
+```
+
+### ✅ Fix
+
+File must be named:
+
+```
+docker-compose.yml
+```
+
+---
+
+## 📌 6. Working Compose File
+
+```yaml
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+```
+
+---
+
+## 📌 7. Network Issue (TLS Error)
+
+### ❌ Error
+
+```
+TLS handshake timeout
+```
+
+### Cause
+
+* Internet issue
+* Firewall/VPN
+
+### Fix
+
+* Switch network
+* Restart Docker
+* Use hotspot
+
+---
+
+## 📌 8. Logs & Debugging
+
+### View logs
+
+```
+docker compose logs
+```
+
+### Live logs
+
+```
+docker compose logs -f
+```
+
+---
+
+## 📌 9. Container Lifecycle
+
+### Check running
+
+```
+docker compose ps
+```
+
+### Stop
+
+```
+docker compose stop
+```
+
+### Start
+
+```
+docker compose start
+```
+
+---
+
+## 📌 10. Service vs Image (Very Important)
+
+| Concept | Example |
+| ------- | ------- |
+| Service | web     |
+| Image   | nginx   |
+
+### Correct exec
+
+```
+docker compose exec web sh
+```
+
+---
+
+## 📌 11. Ubuntu Container Setup
+
+### Add in compose file
+
+```yaml
+  ubuntu:
+    image: ubuntu
+    stdin_open: true
+    tty: true
+```
+
+### Run
+
+```
+docker compose up -d
+```
+
+### Enter container
+
+```
+docker compose exec ubuntu bash
+```
+
+---
+
+## 📌 12. Important Concepts Learned
+
+* Docker Compose depends on file naming convention
+* Containers must be running for exec
+* Service name ≠ image name
+* Network issues affect image pulling
+* Foreground vs detached mode
+
+---
+
+## 📌 13. Mental Model
+
+```
+YAML → Image → Container → Running App
+```
+
+---
+
+## 📌 14. Common Mistakes
+
+* Wrong file name (no .yml)
+* Using image name instead of service name
+* Typo in commands (logss ❌)
+* Using bash where not available
+
+---
+
+## 📌 15. Final Outcome
+
+* Successfully ran nginx container
+* Access via:
+
+```
+http://localhost:8080
+```
+
+---
+
+## 🚀 Next Steps
+
+* Multi-container setup (Node + Mongo)
+* Docker networking
+* CI/CD pipeline integration
+
+---
+
+## 🧠 Key Insight
+
+> DevOps = automation + consistency + repeatability
+
+---
+
+**End of Notes**
